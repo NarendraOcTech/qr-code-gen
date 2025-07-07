@@ -32,7 +32,8 @@ $app->post('/generate-qr', function (ServerRequestInterface $request, ResponseIn
 
     foreach ($ids as $id) {
         // Create QR code with label at the bottom
-        $qrCode = QrCode::create((string) $id)
+        $url = "https://thedigitalapps.com/milkybar/api/users?id=" . urlencode((string) $id);
+        $qrCode = QrCode::create((string) $url)
             ->setSize(300)
             ->setMargin(10);
 
